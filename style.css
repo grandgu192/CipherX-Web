@@ -1,15 +1,51 @@
 
+:root {
+  --bg-color: #f0f2f5;
+  --container-bg: white;
+  --text-color: #333;
+  --input-bg: white;
+  --input-border: #ddd;
+  --output-bg: #f8f9fa;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --container-bg: #2d2d2d;
+  --text-color: #fff;
+  --input-bg: #3d3d3d;
+  --input-border: #4d4d4d;
+  --output-bg: #3d3d3d;
+}
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 20px;
-  background: #f0f2f5;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.theme-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-switch select {
+  padding: 5px;
+  border-radius: 4px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
 }
 
 .container {
   max-width: 600px;
   margin: 0 auto;
-  background: white;
+  background: var(--container-bg);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -29,9 +65,11 @@ h1 {
 
 textarea, input {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-border);
   border-radius: 4px;
   font-size: 16px;
+  background: var(--input-bg);
+  color: var(--text-color);
 }
 
 textarea {
@@ -59,7 +97,7 @@ button:hover {
 }
 
 .output {
-  background: #f8f9fa;
+  background: var(--output-bg);
   padding: 15px;
   border-radius: 4px;
 }

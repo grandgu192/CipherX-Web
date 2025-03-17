@@ -1,4 +1,17 @@
 
+function changeTheme() {
+  const theme = document.getElementById('themeSelect').value;
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
+
+// Load saved theme
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.getElementById('themeSelect').value = savedTheme;
+  document.documentElement.setAttribute('data-theme', savedTheme);
+});
+
 function generateKey(length = 16) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   return Array.from(crypto.getRandomValues(new Uint8Array(length)))
