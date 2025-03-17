@@ -1,16 +1,29 @@
+
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>replit</title>
+  <title>Secure Encryption</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
-
 <body>
-  Hello world
+  <div class="container">
+    <h1>Secure Text Encryption</h1>
+    <div class="input-group">
+      <textarea id="message" placeholder="Enter message to encrypt/decrypt"></textarea>
+      <input type="password" id="key" placeholder="Enter encryption key">
+      <div class="buttons">
+        <button onclick="encrypt()">Encrypt</button>
+        <button onclick="decrypt()">Decrypt</button>
+      </div>
+    </div>
+    <div class="output">
+      <h3>Result:</h3>
+      <p id="result"></p>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
-
 </html>
