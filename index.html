@@ -27,8 +27,22 @@
       </div>
     </div>
     <div class="output">
-      <h3>Result:</h3>
+      <div class="output-header">
+        <h3>Result:</h3>
+        <button onclick="copyResult()" class="icon-button">📋 Copy</button>
+      </div>
       <p id="result"></p>
+    </div>
+    <div class="extra-features">
+      <div class="key-strength">
+        <span>Key Strength: </span>
+        <span id="strengthIndicator">No key</span>
+      </div>
+      <div class="file-controls">
+        <input type="file" id="fileInput" onchange="handleFileUpload()" />
+        <button onclick="downloadResult()">Download Result</button>
+      </div>
+      <button onclick="clearAll()" class="clear-button">Clear All</button>
     </div>
   </div>
   <script src="script.js"></script>

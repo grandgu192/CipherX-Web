@@ -105,3 +105,40 @@ button:hover {
 #result {
   word-break: break-all;
 }
+
+.output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-button {
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.extra-features {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.key-strength {
+  padding: 10px;
+  border-radius: 4px;
+  background: var(--output-bg);
+}
+
+.file-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.clear-button {
+  background: #dc3545;
+}
+
+.clear-button:hover {
+  background: #bb2d3b;
+}

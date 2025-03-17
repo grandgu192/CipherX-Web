@@ -12,6 +12,53 @@ document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.setAttribute('data-theme', savedTheme);
 });
 
+function copyResult() {
+  const result = document.getElementById('result').textContent;
+  navigator.clipboard.writeText(result)
+    .then(() => alert('Copied to clipboard!'))
+    .catch(err => alert('Failed to copy: ' + err));
+}
+
+function clearAll() {
+  document.getElementById('message').value = '';
+  document.getElementById('key').value = '';
+  document.getElementById('result').textContent = '';
+  document.getElementById('strengthIndicator').textContent = 'No key';
+}
+
+function checkKeyStrength(key) {
+  if (!key) return 'No key';
+  if (key.length < 8) return 'Weak';
+  if (key.length < 12) return 'Medium';
+  return 'Strong';
+}
+
+function handleFileUpload() {
+  const file = document.getElementById('fileInput').files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      document.getElementById('message').value = e.target.result;
+    };
+    reader.readAsText(file);
+  }
+}
+
+function downloadResult() {
+  const result = document.getElementById('result').textContent;
+  if (!result) {
+    alert('No result to download');
+    return;
+  }
+  const blob = new Blob([result], {type: 'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'encrypted-result.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 function generateKey(length = 16) {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   return Array.from(crypto.getRandomValues(new Uint8Array(length)))
@@ -32,6 +79,7 @@ function encrypt() {
     key = generateKey();
     document.getElementById('key').value = key;
   }
+  document.getElementById('strengthIndicator').textContent = checkKeyStrength(key);
 
   try {
     const encrypted = CryptoJS.AES.encrypt(message, key).toString();
